@@ -3,25 +3,39 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kiosk - Aviate Academy</title>
+  <title>Kiosk Aviate Academy</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <style>
-    html, body { height: 100%; margin: 0; overflow: hidden; }
-    body { display: flex; align-items: center; justify-content: center; background: #f9fafb; }
-    .kiosk-container { width: 100vw; height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px; }
-    .btn-large { font-size: 1.5rem; padding: 1rem 2rem; margin-top: 1rem; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      background: linear-gradient(to right, #00c6ff, #0072ff);
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .button {
+      font-size: 1.5rem;
+      padding: 1rem 2rem;
+      border-radius: 1rem;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+    .button:hover {
+      filter: brightness(110%);
+    }
   </style>
 </head>
 <body>
-  <div class="kiosk-container">
-    <img src="Cessna.jpg" alt="Cessna Aircraft" class="w-full max-w-3xl rounded shadow mb-6" />
-    <h1 class="text-3xl md:text-4xl font-bold mb-2">Selamat Datang di Aviate Academy</h1>
-    <p class="text-lg text-gray-600 mb-6">Silakan pilih layanan di bawah untuk melanjutkan.</p>
+  <div class="flex flex-col items-center justify-center h-full text-white text-center p-4">
+    <img src="Cessna.jpg" alt="Pesawat Cessna" class="max-w-md w-full rounded-xl shadow-xl mb-6 border-4 border-white">
+    <h1 class="text-4xl md:text-5xl font-extrabold mb-4 drop-shadow">Selamat Datang di Aviate Academy</h1>
+    <p class="text-lg md:text-xl mb-6 max-w-2xl drop-shadow">Temukan program pelatihan terbaik untuk masa depan Anda di dunia penerbangan.</p>
 
-    <div class="flex flex-col space-y-4 w-full max-w-md">
-      <button class="bg-blue-600 text-white rounded btn-large">📝 Daftar Program Pelatihan</button>
-      <button class="bg-green-600 text-white rounded btn-large">📅 Jadwal Konsultasi</button>
-      <button class="bg-yellow-500 text-white rounded btn-large">ℹ️ Informasi Akademi</button>
+    <div class="flex flex-col space-y-4 w-full max-w-sm">
+      <button class="button bg-yellow-400 text-blue-900">📝 Daftar Program</button>
+      <button class="button bg-white text-blue-700">📅 Jadwal Konsultasi</button>
+      <button class="button bg-pink-500 text-white">ℹ️ Informasi Akademi</button>
     </div>
   </div>
 </body>
