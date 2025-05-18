@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kiosk Aviate Academy</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+  <!-- SwiperJS CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
   <style>
     html, body {
       margin: 0;
@@ -24,20 +28,68 @@
     .button:hover {
       filter: brightness(110%);
     }
+    .swiper-pagination-bullet {
+      background: white !important;
+      opacity: 0.6;
+    }
+    .swiper-pagination-bullet-active {
+      opacity: 1;
+    }
   </style>
 </head>
 <body>
-  <div class="flex flex-col items-center justify-center h-full text-white text-center p-4">
-    <img src="bifalogo.png" alt="Logo Bifa" class="max-w-md w-full">
-    <h1 class="text-4xl md:text-5xl font-extrabold mb-4 drop-shadow">Student Information Access BCL</h1>
-    <p class="text-lg md:text-xl mb-6 max-w-2xl drop-shadow">Access your training schedule, academic progress, and learning materials – all in one place.
-Stay connected and informed throughout your aviation journey.</p>
 
-<!--     <div class="flex flex-col space-y-4 w-full max-w-sm">
-      <button class="button bg-yellow-400 text-blue-900">📝 Daftar Program</button>
-      <button class="button bg-white text-blue-700">📅 Jadwal Konsultasi</button>
-      <button class="button bg-pink-500 text-white">ℹ️ Informasi Akademi</button>
-    </div> -->
+  <!-- Swiper container -->
+  <div class="swiper h-full">
+    <div class="swiper-wrapper">
+
+      <!-- Slide 1 -->
+      <div class="swiper-slide flex flex-col items-center justify-center h-full text-white text-center p-4">
+        <img src="bifalogo.png" alt="Logo Bifa" class="max-w-md w-full mb-4">
+        <h1 class="text-4xl md:text-5xl font-extrabold mb-4 drop-shadow">Student Information Access BCL</h1>
+        <p class="text-lg md:text-xl mb-6 max-w-2xl drop-shadow">
+          Access your training schedule, academic progress, and learning materials – all in one place.
+          Stay connected and informed throughout your aviation journey.
+        </p>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="swiper-slide flex flex-col items-center justify-center h-full text-white text-center p-4">
+        <h1 class="text-4xl md:text-5xl font-extrabold mb-4 drop-shadow">📅 Flight Training Schedule</h1>
+        <p class="text-lg md:text-xl mb-6 max-w-2xl drop-shadow">
+          Check daily schedules, simulator sessions, and instructor assignments in real time.
+        </p>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="swiper-slide flex flex-col items-center justify-center h-full text-white text-center p-4">
+        <h1 class="text-4xl md:text-5xl font-extrabold mb-4 drop-shadow">📚 Digital Learning Resources</h1>
+        <p class="text-lg md:text-xl mb-6 max-w-2xl drop-shadow">
+          Access updated modules, procedures, and reference materials directly from the cloud.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- Pagination (dots) -->
+    <div class="swiper-pagination mb-4"></div>
   </div>
+
+  <!-- SwiperJS JS -->
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script>
+    const swiper = new Swiper('.swiper', {
+      direction: 'horizontal',
+      loop: true,
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+    });
+  </script>
 </body>
 </html>
