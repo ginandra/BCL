@@ -2,14 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>BCL Kiosk</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
   <style>
     body, html {
-      margin: 0;
-      padding: 0;
       height: 100%;
       background: linear-gradient(to right, #00c6ff, #0072ff);
       font-family: 'Segoe UI', sans-serif;
@@ -28,25 +26,47 @@
     <div class="swiper-wrapper">
 
       <!-- Slide 1 -->
-      <div class="swiper-slide h-screen flex flex-col items-center justify-center text-white text-center p-4">
-        <img src="bifalogo.png" alt="Logo BIFA" class="max-w-md w-full mb-6" />
-        <h1 class="text-4xl md:text-5xl font-extrabold mb-4 drop-shadow">Student Information Access - BCL</h1>
-        <p class="text-lg md:text-xl max-w-xl drop-shadow">Quick access to your schedules, grades, and learning resources. Stay informed through BIFA Cloud Library.</p>
+      <div class="swiper-slide">
+        <div class="flex justify-center items-center min-h-screen w-full">
+          <div class="text-white text-center px-4">
+            <img src="bifalogo.png" alt="Logo BIFA" class="w-32 h-auto mb-6 mx-auto" />
+            <h1 class="text-4xl md:text-5xl font-extrabold mb-4 drop-shadow">
+              Student Information Access - <span class="text-white font-bold">BCL</span>
+            </h1>
+            <p class="text-lg md:text-xl max-w-xl mx-auto drop-shadow">
+              Quick access to your schedules, grades, and learning resources. <br />
+              Stay informed through BIFA Cloud Library.
+            </p>
+          </div>
+        </div>
       </div>
 
       <!-- Slide 2 -->
-      <div class="swiper-slide h-screen flex flex-col items-center justify-center text-white text-center px-4">
-        <h1 class="text-3xl md:text-4xl font-bold mb-4 drop-shadow">📅 Flight Schedule Access</h1>
-        <p class="text-lg md:text-xl max-w-xl drop-shadow">Stay up to date with your flight and ground school schedule anytime.</p>
+      <div class="swiper-slide">
+        <div class="flex justify-center items-center min-h-screen w-full">
+          <div class="text-white text-center px-4">
+            <h1 class="text-3xl md:text-4xl font-bold mb-4 drop-shadow">📅 Flight Schedule Access</h1>
+            <p class="text-lg md:text-xl max-w-xl mx-auto drop-shadow">
+              Stay up to date with your flight and ground school schedule anytime.
+            </p>
+          </div>
+        </div>
       </div>
 
       <!-- Slide 3 -->
-      <div class="swiper-slide h-screen flex flex-col items-center justify-center text-white text-center px-4">
-        <h1 class="text-3xl md:text-4xl font-bold mb-4 drop-shadow">📘 Learning Materials</h1>
-        <p class="text-lg md:text-xl max-w-xl drop-shadow">Access study guides, SOPs, and documents directly from the cloud.</p>
+      <div class="swiper-slide">
+        <div class="flex justify-center items-center min-h-screen w-full">
+          <div class="text-white text-center px-4">
+            <h1 class="text-3xl md:text-4xl font-bold mb-4 drop-shadow">📘 Learning Materials</h1>
+            <p class="text-lg md:text-xl max-w-xl mx-auto drop-shadow">
+              Access study guides, SOPs, and documents directly from the cloud.
+            </p>
+          </div>
+        </div>
       </div>
 
     </div>
+
     <div class="swiper-pagination mb-6"></div>
   </div>
 
