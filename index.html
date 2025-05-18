@@ -1,46 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aviate Academy</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kiosk - Aviate Academy</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    html, body { height: 100%; margin: 0; overflow: hidden; }
+    body { display: flex; align-items: center; justify-content: center; background: #f9fafb; }
+    .kiosk-container { width: 100vw; height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px; }
+    .btn-large { font-size: 1.5rem; padding: 1rem 2rem; margin-top: 1rem; }
+  </style>
 </head>
-<body class="bg-white text-gray-900 font-sans">
+<body>
+  <div class="kiosk-container">
+    <img src="Cessna.jpg" alt="Cessna Aircraft" class="w-full max-w-3xl rounded shadow mb-6" />
+    <h1 class="text-3xl md:text-4xl font-bold mb-2">Selamat Datang di Aviate Academy</h1>
+    <p class="text-lg text-gray-600 mb-6">Silakan pilih layanan di bawah untuk melanjutkan.</p>
 
-  <!-- Navbar -->
-  <nav class="flex justify-between items-center p-6 shadow-md">
-    <div class="text-blue-600 font-bold text-xl">✈ Aviate Academy</div>
-    <ul class="hidden md:flex space-x-6">
-      <li><a href="#" class="hover:text-blue-600">Home</a></li>
-      <li><a href="#" class="hover:text-blue-600">About Us</a></li>
-      <li><a href="#" class="hover:text-blue-600">Programs</a></li>
-      <li><a href="#" class="hover:text-blue-600">Enrollment</a></li>
-      <li><a href="#" class="hover:text-blue-600">Contact Us</a></li>
-    </ul>
-    <button class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">Apply Now</button>
-  </nav>
-
-  <!-- Hero Section -->
-  <section class="relative bg-cover bg-center h-[500px]" style="background-image: url('YOUR_CESSNA_IMAGE_PATH.jpg');">
-    <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-      <div class="text-center text-white px-6">
-        <h1 class="text-4xl font-bold mb-4">Take Flight with Confidence<br>Begin Your Career Today</h1>
-        <p class="mb-6 text-lg">At Aviate Academy, we prepare aspiring pilots with the skills and confidence to soar.</p>
-        <div class="flex justify-center gap-4">
-          <button class="bg-white text-blue-600 px-5 py-2 rounded-md font-semibold hover:bg-gray-100">Book Your Free Flight</button>
-          <button class="bg-blue-600 text-white px-5 py-2 rounded-md font-semibold hover:bg-blue-700">Start Your Journey</button>
-        </div>
-      </div>
+    <div class="flex flex-col space-y-4 w-full max-w-md">
+      <button class="bg-blue-600 text-white rounded btn-large">📝 Daftar Program Pelatihan</button>
+      <button class="bg-green-600 text-white rounded btn-large">📅 Jadwal Konsultasi</button>
+      <button class="bg-yellow-500 text-white rounded btn-large">ℹ️ Informasi Akademi</button>
     </div>
-  </section>
-
-  <!-- Flight Training Section -->
-  <section class="p-8 text-center">
-    <h2 class="text-2xl font-bold mb-4">Our Flight Training Programs</h2>
-    <p class="mb-6 text-gray-600">We offer comprehensive programs designed to help you achieve your aviation goals.</p>
-    <a href="#" class="inline-block bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700">See All Programs</a>
-  </section>
-
+  </div>
 </body>
 </html>
