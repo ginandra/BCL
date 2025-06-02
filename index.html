@@ -6,6 +6,7 @@
   <title>BCL Kiosk</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <script src="https://unpkg.com/feather-icons"></script>
   <style>
     body, html {
       height: 100%;
@@ -19,6 +20,12 @@
     .swiper-pagination-bullet-active {
       opacity: 1;
     }
+	  
+  .menu-btn i {
+    width: 24px;
+    height: 24px;
+    margin-bottom: 0.5rem;
+  }
   </style>
 </head>
 <body>
@@ -29,15 +36,17 @@
       <div class="swiper-slide">
         <div class="flex justify-center items-center min-h-screen w-full">
           <div class="text-white text-center px-4">
-            <img src="bifalogo.png" alt="Logo BIFA" class="w-50 h-auto mb-6 mx-auto" />
+            <img src="bifalogo.png" alt="Logo BIFA" class="w-32 h-auto mb-6 mx-auto" />
             <h1 class="text-4xl md:text-5xl font-extrabold mb-4 drop-shadow">
               Student Information Access - <span class="text-white font-bold">BCL</span>
             </h1>
-            <p class="text-lg md:text-xl max-w-xl mx-auto drop-shadow">
+            <p class="text-lg md:text-xl max-w-xl mx-auto drop-shadow mb-4">
               Quick access to your schedules, grades, and learning resources. <br />
               Stay informed through BIFA Cloud Library.
             </p>
-            
+			<a href="https://drive.google.com/drive/folder-link" target="_blank" class="inline-block bg-white text-blue-600 font-semibold px-6 py-3 rounded-full shadow-lg hover:bg-blue-100 transition duration-300">
+        BCL Access
+      </a>
           </div>
         </div>
       </div>
@@ -47,12 +56,9 @@
         <div class="flex justify-center items-center min-h-screen w-full">
           <div class="text-white text-center px-4">
             <h1 class="text-3xl md:text-4xl font-bold mb-4 drop-shadow">📅 Flight Schedule Access</h1>
-            <p class="text-lg md:text-xl max-w-xl mx-auto drop-shadow mb-4">
+            <p class="text-lg md:text-xl max-w-xl mx-auto drop-shadow">
               Stay up to date with your flight and ground school schedule anytime.
             </p>
-            <a href="https://drive.google.com/drive/folder-link" target="_blank" class="inline-block bg-white text-blue-600 font-semibold px-6 py-3 rounded-full shadow-lg hover:bg-blue-100 transition duration-300">
-        SRS Access
-      </a>
           </div>
         </div>
       </div>
@@ -62,15 +68,34 @@
         <div class="flex justify-center items-center min-h-screen w-full">
           <div class="text-white text-center px-4">
             <h1 class="text-3xl md:text-4xl font-bold mb-4 drop-shadow">📘 Learning Materials</h1>
-            <p class="text-lg md:text-xl max-w-xl mx-auto drop-shadow mb-4">
+            <p class="text-lg md:text-xl max-w-xl mx-auto drop-shadow">
               Access study guides, SOPs, and documents directly from the cloud.
             </p>
-            <a href="https://drive.google.com/drive/folder-link" target="_blank" class="inline-block bg-white text-blue-600 font-semibold px-6 py-3 rounded-full shadow-lg hover:bg-blue-100 transition duration-300">
-        BCL Access
-      </a>
           </div>
         </div>
       </div>
+
+<!-- Slide 4 -->
+<div class="swiper-slide">
+  <div class="flex justify-center items-center min-h-screen w-full">
+    <div class="flex flex-rows items-center gap-8 px-4 max-w-6xl mx-auto">
+
+      <!-- Gambar pesawat besar di tengah -->
+      <img src="Cessna.png" alt="Pesawat Cessna" class="w-full max-w-md h-auto mb-4" />
+
+      <!-- Tombol menu di bawah gambar -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 gap-4 text-center w-full">
+        <button onclick="openModal('Student Schedule', 'Check your daily ground and flight schedule.')" class="bg-white text-blue-600 font-semibold py-4 px-2 rounded-xl shadow-md hover:bg-blue-100 transition flex flex-col items-center justify-center text-sm"><i data-feather="calendar" class="w-6 h-6 mb-2"></i>Student Schedule</button>
+        <button onclick="openModal('Flight Briefing', 'Access your flight briefing materials.')" class="bg-white text-blue-600 font-semibold py-4 px-2 rounded-xl shadow-md hover:bg-blue-100 transition flex flex-col items-center justify-center text-sm"><i data-feather="file-text" class="w-6 h-6 mb-2"></i>Flight Briefing</button>
+        <button onclick="openModal('Grades Access', 'View your academic performance and progress.')" class="bg-white text-blue-600 font-semibold py-4 px-2 rounded-xl shadow-md hover:bg-blue-100 transition flex flex-col items-center justify-center text-sm"><i data-feather="bar-chart-2" class="w-6 h-6 mb-2"></i>Grades Access</button>
+        <button onclick="openModal('Study Materials', 'Download SOPs and study guides.')" class="bg-white text-blue-600 font-semibold py-4 px-2 rounded-xl shadow-md hover:bg-blue-100 transition flex flex-col items-center justify-center text-sm"><i data-feather="book-open" class="w-6 h-6 mb-2"></i>Study Materials</button>
+        <button onclick="openModal('Instructor Notes', 'Review notes from instructors.')" class="bg-white text-blue-600 font-semibold py-4 px-2 rounded-xl shadow-md hover:bg-blue-100 transition flex flex-col items-center justify-center text-sm"><i data-feather="clipboard" class="w-6 h-6 mb-2"></i>Instructor Notes</button>
+        <button onclick="openModal('Request Form', 'Submit a request to the academy.')" class="bg-white text-blue-600 font-semibold py-4 px-2 rounded-xl shadow-md hover:bg-blue-100 transition flex flex-col items-center justify-center text-sm"><i data-feather="file-plus" class="w-6 h-6 mb-2"></i>Request Form</button>
+      </div>
+
+    </div>
+  </div>
+</div>
 
     </div>
 
@@ -79,19 +104,56 @@
 
   <!-- SwiperJS -->
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-  <script>
-    const swiper = new Swiper('.swiper', {
-      direction: 'horizontal',
-      loop: true,
-      autoplay: {
-        delay: 5000,
-        disableOnInteraction: false,
-      },
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
-    });
-  </script>
+<script>
+  const swiper = new Swiper('.swiper', {
+    direction: 'horizontal',
+    loop: true,
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+  });
+
+  // Atur logika ketika masuk ke Slide 4
+  swiper.on('slideChange', () => {
+    const currentIndex = swiper.realIndex;
+    if (currentIndex === 3) { // Slide ke-4 (index dimulai dari 0)
+      swiper.autoplay.stop(); // Hentikan autoplay
+      console.log("Stay on slide 4 for 30 minutes...");
+      
+      setTimeout(() => {
+        swiper.slideToLoop(0); // Kembali ke Slide 1
+        swiper.autoplay.start(); // Mulai autoplay kembali
+        console.log("Returning to slide 1...");
+      }, 30 * 60 * 1000); // 30 menit dalam milidetik (1800000)
+    }
+  });
+  
+   function openModal(title, content) {
+    document.getElementById('modalTitle').textContent = title;
+    document.getElementById('modalContent').textContent = content;
+    document.getElementById('customModal').classList.remove('hidden');
+  }
+
+  function closeModal() {
+    document.getElementById('customModal').classList.add('hidden');
+  }
+
+  // Aktifkan feather icons
+  feather.replace();
+</script>
+
+<!-- Modal -->
+<div id="customModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+  <div class="bg-white rounded-xl p-6 max-w-md text-center shadow-xl">
+    <h2 id="modalTitle" class="text-xl font-bold mb-2 text-blue-600">Modal Title</h2>
+    <p id="modalContent" class="mb-4 text-gray-700">Modal content goes here.</p>
+    <button onclick="closeModal()" class="bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700 transition">Close</button>
+  </div>
+</div>
 </body>
 </html>
