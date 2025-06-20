@@ -159,48 +159,8 @@
   <!-- SwiperJS -->
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 <script>
-  const swiper = new Swiper('.swiper', {
-    direction: 'horizontal',
-    loop: true,
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false,
-    },
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-    },
-  });
 
-  // Atur logika ketika masuk ke Slide 4
-  swiper.on('slideChange', () => {
-    const currentIndex = swiper.realIndex;
-    if (currentIndex === 3) { // Slide ke-4 (index dimulai dari 0)
-      swiper.autoplay.stop(); // Hentikan autoplay
-      console.log("Stay on slide 4 for 30 minutes...");
-      
-      setTimeout(() => {
-        swiper.slideToLoop(0); // Kembali ke Slide 1
-        swiper.autoplay.start(); // Mulai autoplay kembali
-        console.log("Returning to slide 1...");
-      }, 30 * 60 * 1000); // 30 menit dalam milidetik (1800000)
-    }
-  });
-  
-   function openModal(title, content) {
-    document.getElementById('modalTitle').textContent = title;
-    document.getElementById('modalContent').textContent = content;
-    document.getElementById('customModal').classList.remove('hidden');
-  }
-
-  function closeModal() {
-    document.getElementById('customModal').classList.add('hidden');
-  }
-
-  // Aktifkan feather icons
-  feather.replace();
-
-	// Tanggal Hari Ini
+		// Tanggal Hari Ini
   const today = new Date();
   const dateStr = today.toISOString().split("T")[0];
   const formattedDate = today.toLocaleDateString('id-ID', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
@@ -263,6 +223,49 @@
   function closeTailwindModal() {
     document.getElementById('tailwindModal').classList.add('hidden');
   }
+	
+  const swiper = new Swiper('.swiper', {
+    direction: 'horizontal',
+    loop: true,
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+  });
+
+  // Atur logika ketika masuk ke Slide 4
+  swiper.on('slideChange', () => {
+    const currentIndex = swiper.realIndex;
+    if (currentIndex === 3) { // Slide ke-4 (index dimulai dari 0)
+      swiper.autoplay.stop(); // Hentikan autoplay
+      console.log("Stay on slide 4 for 30 minutes...");
+      
+      setTimeout(() => {
+        swiper.slideToLoop(0); // Kembali ke Slide 1
+        swiper.autoplay.start(); // Mulai autoplay kembali
+        console.log("Returning to slide 1...");
+      }, 30 * 60 * 1000); // 30 menit dalam milidetik (1800000)
+    }
+  });
+  
+   function openModal(title, content) {
+    document.getElementById('modalTitle').textContent = title;
+    document.getElementById('modalContent').textContent = content;
+    document.getElementById('customModal').classList.remove('hidden');
+  }
+
+  function closeModal() {
+    document.getElementById('customModal').classList.add('hidden');
+  }
+
+  // Aktifkan feather icons
+  feather.replace();
+
+
 </script>
 
 <!-- Modal -->
