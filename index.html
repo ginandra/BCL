@@ -98,58 +98,7 @@
     </div>
   </div>
 </div>
-	    <!-- Slide 5 - Flight Schedule Tailwind -->
-<div class="swiper-slide">
-  <div class="relative min-h-screen w-full bg-white text-black overflow-y-auto px-4 py-6">
-
-    <!-- Title -->
-    <h2 class="text-center text-2xl font-bold text-blue-600 mb-2">✈️ Daily Flight Schedule</h2>
-    <p id="todayTailwind" class="text-center text-gray-500 mb-6 text-sm"></p>
-
-    <!-- Jadwal Penerbangan -->
-    <div id="flightsContainerTailwind" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-      <!-- Card akan di-generate oleh JavaScript -->
-    </div>
-
-    <!-- Summary -->
-    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-10">
-      <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded">
-        <p class="text-sm">👨‍✈️ Duty Instructor</p>
-        <p id="instructorTailwind" class="font-bold text-blue-600 text-lg">-</p>
-      </div>
-      <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded">
-        <p class="text-sm">📋 Total Flight</p>
-        <p id="total_flightTailwind" class="font-bold text-blue-600 text-lg">0</p>
-      </div>
-      <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded">
-        <p class="text-sm">🛩️ Aircraft in Use</p>
-        <p id="total_aircraftTailwind" class="font-bold text-blue-600 text-lg">0</p>
-      </div>
-      <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded">
-        <p class="text-sm">🕓 Plan Duration</p>
-        <p id="total_planTailwind" class="font-bold text-blue-600 text-lg">00:00</p>
-      </div>
-    </div>
-
-    <!-- Floating Action Button (FAB) -->
-    <div class="fixed bottom-6 right-6 z-50">
-      <div id="fabMenu" class="relative">
-        <!-- Sub buttons -->
-        <div id="fabOptions" class="absolute bottom-16 right-0 flex flex-col items-end space-y-3 hidden">
-          <button onclick="showTailwindModal('Flight Options', ['📅 Flight Schedule','📝 Flight Report'])" class="bg-white text-blue-600 font-semibold px-4 py-2 rounded-full shadow hover:bg-blue-100">Flight</button>
-          <button onclick="showTailwindModal('Ground Options', ['📅 Ground Schedule','📝 Ground Report'])" class="bg-white text-blue-600 font-semibold px-4 py-2 rounded-full shadow hover:bg-blue-100">Ground</button>
-          <button onclick="showTailwindModal('FTD Options', ['📅 FTD Schedule','📝 FTD Report'])" class="bg-white text-blue-600 font-semibold px-4 py-2 rounded-full shadow hover:bg-blue-100">FTD</button>
-        </div>
-        <!-- Main FAB -->
-        <button id="fabToggle" class="bg-blue-600 text-white rounded-full w-14 h-14 flex items-center justify-center shadow-lg hover:bg-blue-700 transition">
-          <i class="fas fa-plus text-xl"></i>
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
-
-     
+	   
 
     </div>
 
@@ -160,82 +109,7 @@
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 <script>
 
-		// Tanggal Hari Ini
-  const today = new Date();
-  const dateStr = today.toISOString().split("T")[0];
-  const formattedDate = today.toLocaleDateString('id-ID', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
-  document.getElementById("todayTailwind").textContent = formattedDate;
-
-  fetch(`https://to.baliflightacademy.com:7329/srs/api_kiosk/flight_schedule?date=${dateStr}`)
-    .then(res => res.json())
-    .then(json => {
-      const data = json.data || [];
-      const container = document.getElementById("flightsContainerTailwind");
-
-      if (!data.length) {
-        container.innerHTML = `<div class="col-span-full text-center text-gray-400">📭 No schedule available today.</div>`;
-        return;
-      }
-
-      document.getElementById("total_flightTailwind").textContent = data.length;
-
-      const aircraftSet = new Set();
-      let totalMinutes = 0;
-
-      data.forEach(item => {
-        if (item.aircraft_reg) aircraftSet.add(item.aircraft_reg);
-        if (item.eet) {
-          const [h, m] = item.eet.split(":").map(Number);
-          totalMinutes += h * 60 + m;
-        }
-
-        const card = document.createElement("div");
-        card.className = "bg-white shadow p-4 rounded-lg border-l-4 border-blue-500";
-        card.innerHTML = `
-          <h3 class="text-lg font-bold text-blue-600 mb-1">✈️ ${item.aircraft_reg || '-'}</h3>
-          <p class="text-sm"><strong>PIC:</strong> ${item.pic_name || '-'}</p>
-          <p class="text-sm"><strong>DEP:</strong> ${item.dep || '-'} → ${item.arr || '-'}</p>
-          <p class="text-sm"><strong>ETA:</strong> ${item.eta_utc || '-'} | <strong>EET:</strong> ${item.eet || '-'}</p>
-          <p class="text-xs text-gray-600 mt-2">${item.remark || ''}</p>
-        `;
-        container.appendChild(card);
-      });
-
-      document.getElementById("total_aircraftTailwind").textContent = aircraftSet.size;
-      const h = String(Math.floor(totalMinutes / 60)).padStart(2, '0');
-      const m = String(totalMinutes % 60).padStart(2, '0');
-      document.getElementById("total_planTailwind").textContent = `${h}:${m}`;
-    });
-
-  // FAB Toggle
-  document.getElementById('fabToggle').addEventListener('click', () => {
-    const options = document.getElementById('fabOptions');
-    options.classList.toggle('hidden');
-  });
-
-  // Modal Handler
-  function showTailwindModal(title, items) {
-    document.getElementById('tailwindModalTitle').textContent = title;
-    document.getElementById('tailwindModalContent').innerHTML = `<ul class="list-disc list-inside">${items.map(i => `<li>${i}</li>`).join('')}</ul>`;
-    document.getElementById('tailwindModal').classList.remove('hidden');
-  }
-
-  function closeTailwindModal() {
-    document.getElementById('tailwindModal').classList.add('hidden');
-  }
-	
-  const swiper = new Swiper('.swiper', {
-    direction: 'horizontal',
-    loop: true,
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false,
-    },
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-    },
-  });
+		
 
   // Atur logika ketika masuk ke Slide 4
   swiper.on('slideChange', () => {
@@ -276,13 +150,7 @@
     <button onclick="closeModal()" class="bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700 transition">Close</button>
   </div>
 </div>
-	<!-- Modal Tailwind -->
-<div id="tailwindModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
-  <div class="bg-white rounded-xl p-6 max-w-md text-center shadow-xl">
-    <h2 id="tailwindModalTitle" class="text-xl font-bold mb-2 text-blue-600">Modal Title</h2>
-    <div id="tailwindModalContent" class="mb-4 text-gray-700 text-left text-sm"></div>
-    <button onclick="closeTailwindModal()" class="bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700 transition">Close</button>
-  </div>
+	
 </div>
 </body>
 </html>
