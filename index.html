@@ -47,6 +47,15 @@
   .rotate-180 {
   transform: rotate(180deg);
   transition: transform 0.3s ease;
+
+    @keyframes fadeIn {
+    0% { opacity: 0; transform: scale(0.9); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+
+  .animate-fadeIn {
+    animation: fadeIn 0.3s ease-out forwards;
+  }
 }
   </style>
 </head>
@@ -119,9 +128,9 @@
           <i data-feather="file-text" class="w-6 h-6 mb-2"></i>Daily<br>Student Report
         </button>
 
-        <button onclick="openModal('Grades Access', 'View your academic performance and progress.')" class="bg-white text-blue-600 font-semibold py-4 px-2 rounded-xl shadow-md hover:bg-blue-100 transition flex flex-col items-center justify-center text-sm">
-          <i data-feather="bar-chart-2" class="w-6 h-6 mb-2"></i>Grades Access
-        </button>
+        <button onclick="openQrModal('https://to.baliflightacademy.com:7329/srs/mobile/')" class="bg-white text-blue-600 font-semibold py-4 px-2 rounded-xl shadow-md hover:bg-blue-100 transition flex flex-col items-center justify-center text-sm">
+  <i data-feather="smartphone" class="w-6 h-6 mb-2"></i>Access SRS Mobile 
+</button>
 
         <button onclick="openModal('Study Materials', 'Download SOPs and study guides.')" class="bg-white text-blue-600 font-semibold py-4 px-2 rounded-xl shadow-md hover:bg-blue-100 transition flex flex-col items-center justify-center text-sm">
           <i data-feather="book-open" class="w-6 h-6 mb-2"></i>Study Materials
@@ -250,6 +259,27 @@ function closeScheduleModal() {
   subButtons.classList.remove('show');
 }
 
+function openQrModal(url) {
+  document.getElementById('qrModal').classList.remove('hidden');
+  
+  // Hapus QR sebelumnya jika ada
+  const qrContainer = document.getElementById('qrcode');
+  qrContainer.innerHTML = "";
+
+  // Generate QR baru
+  new QRCode(qrContainer, {
+    text: url,
+    width: 180,
+    height: 180,
+    colorDark: "#000000",
+    colorLight: "#ffffff",
+    correctLevel: QRCode.CorrectLevel.H
+  });
+}
+
+function closeQrModal() {
+  document.getElementById('qrModal').classList.add('hidden');
+}
 
 
 </script>
@@ -274,6 +304,27 @@ function closeScheduleModal() {
   </div>
 </div>	
 
+<!-- QR Modal -->
+<div id="qrModal" class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 hidden">
+  <div class="bg-white rounded-2xl p-6 sm:p-8 max-w-md w-full shadow-2xl relative animate-fadeIn">
+    <h2 class="text-2xl font-bold text-center text-blue-700 mb-3">📱 Access SRS Mobile</h2>
+    <p class="text-gray-600 text-center mb-6">Scan the QR code below to open the mobile student system.</p>
+
+    <div class="flex justify-center mb-4">
+  <img src="bifalogo.png" class="h-12" alt="BIFA Logo">
 </div>
+
+    <div id="qrcode" class="flex justify-center mb-6"></div>
+
+    <div class="flex justify-center">
+      <button onclick="closeQrModal()" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-full shadow-md transition duration-300">
+        Close
+      </button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
 </body>
 </html>
