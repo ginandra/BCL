@@ -101,7 +101,7 @@
 	   
 
     </div>
-
+</div>
     <div class="swiper-pagination mb-6"></div>
   </div>
 
@@ -109,7 +109,18 @@
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 <script>
 
-		
+		const swiper = new Swiper('.swiper', {
+  direction: 'horizontal',
+  loop: true,
+  autoplay: {
+    delay: 5000,
+    disableOnInteraction: false,
+  },
+  pagination: {
+    el: '.swiper-pagination',
+    clickable: true,
+  },
+});
 
   // Atur logika ketika masuk ke Slide 4
   swiper.on('slideChange', () => {
