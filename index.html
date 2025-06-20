@@ -28,6 +28,26 @@
     height: 24px;
     margin-bottom: 0.5rem;
   }
+    /* Animasi smooth untuk subScheduleButtons */
+  #subScheduleButtons {
+    transition: all 0.4s ease;
+    transform: scale(0.95);
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+  }
+
+  #subScheduleButtons.show {
+    opacity: 1;
+    transform: scale(1);
+    height: auto;
+    margin-top: 1.5rem; /* mt-6 */
+  }
+
+  .rotate-180 {
+  transform: rotate(180deg);
+  transition: transform 0.3s ease;
+}
   </style>
 </head>
 <body>
@@ -79,33 +99,62 @@
 
 <!-- Slide 4 -->
 <div class="swiper-slide">
-  <div class="flex justify-center items-center min-h-screen w-full">
-    <div class="flex flex-rows items-center gap-8 px-4 max-w-6xl mx-auto">
+  <div class="flex flex-col items-center justify-center min-h-screen w-full px-4">
 
-      <!-- Gambar pesawat besar di tengah -->
-      <img src="Cessna.png" alt="Pesawat Cessna" class="w-full max-w-md h-auto mb-4" />
+    <!-- Flex row: gambar kiri, tombol kanan -->
+    <div class="flex flex-col md:flex-row items-center md:items-start gap-8 max-w-6xl w-full">
 
-      <!-- Tombol menu di bawah gambar -->
-      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 gap-4 text-center w-full">
-        <button onclick="openScheduleModal('https://to.baliflightacademy.com:7329/srs/kiosk/')" class="bg-white text-blue-600 font-semibold py-4 px-2 rounded-xl shadow-md hover:bg-blue-100 transition flex flex-col items-center justify-center text-sm">
-  <i data-feather="calendar" class="w-6 h-6 mb-2"></i>Student Schedule
-</button>
-        <button onclick="openModal('Flight Briefing', 'Access your flight briefing materials.')" class="bg-white text-blue-600 font-semibold py-4 px-2 rounded-xl shadow-md hover:bg-blue-100 transition flex flex-col items-center justify-center text-sm"><i data-feather="file-text" class="w-6 h-6 mb-2"></i>Flight Briefing</button>
-        <button onclick="openModal('Grades Access', 'View your academic performance and progress.')" class="bg-white text-blue-600 font-semibold py-4 px-2 rounded-xl shadow-md hover:bg-blue-100 transition flex flex-col items-center justify-center text-sm"><i data-feather="bar-chart-2" class="w-6 h-6 mb-2"></i>Grades Access</button>
-        <button onclick="openModal('Study Materials', 'Download SOPs and study guides.')" class="bg-white text-blue-600 font-semibold py-4 px-2 rounded-xl shadow-md hover:bg-blue-100 transition flex flex-col items-center justify-center text-sm"><i data-feather="book-open" class="w-6 h-6 mb-2"></i>Study Materials</button>
-        <button onclick="openModal('Instructor Notes', 'Review notes from instructors.')" class="bg-white text-blue-600 font-semibold py-4 px-2 rounded-xl shadow-md hover:bg-blue-100 transition flex flex-col items-center justify-center text-sm"><i data-feather="clipboard" class="w-6 h-6 mb-2"></i>Instructor Notes</button>
-        <button onclick="openModal('Request Form', 'Submit a request to the academy.')" class="bg-white text-blue-600 font-semibold py-4 px-2 rounded-xl shadow-md hover:bg-blue-100 transition flex flex-col items-center justify-center text-sm"><i data-feather="file-plus" class="w-6 h-6 mb-2"></i>Request Form</button>
+      <!-- Gambar pesawat (kiri di desktop) -->
+      <div class="w-full md:w-1/2 flex justify-center">
+        <img src="Cessna.png" alt="Pesawat Cessna" class="w-full max-w-md h-auto" />
       </div>
 
-    </div>
-  </div>
-</div>
-	   
+      <!-- Tombol menu (kanan di desktop) -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 text-center w-full md:w-1/2">
+        <button id="subScheduleTrigger" onclick="toggleSubScheduleButtons()" class="bg-white text-blue-600 font-semibold py-4 px-2 rounded-xl shadow-md hover:bg-blue-100 transition flex flex-col items-center justify-center text-sm">
+          <i data-feather="calendar" class="w-6 h-6 mb-2"></i>Daily<br>Student Schedule
+        </button>
 
+        <button onclick="openModal('Flight Briefing', 'Access your flight briefing materials.')" class="bg-white text-blue-600 font-semibold py-4 px-2 rounded-xl shadow-md hover:bg-blue-100 transition flex flex-col items-center justify-center text-sm">
+          <i data-feather="file-text" class="w-6 h-6 mb-2"></i>Daily<br>Student Report
+        </button>
+
+        <button onclick="openModal('Grades Access', 'View your academic performance and progress.')" class="bg-white text-blue-600 font-semibold py-4 px-2 rounded-xl shadow-md hover:bg-blue-100 transition flex flex-col items-center justify-center text-sm">
+          <i data-feather="bar-chart-2" class="w-6 h-6 mb-2"></i>Grades Access
+        </button>
+
+        <button onclick="openModal('Study Materials', 'Download SOPs and study guides.')" class="bg-white text-blue-600 font-semibold py-4 px-2 rounded-xl shadow-md hover:bg-blue-100 transition flex flex-col items-center justify-center text-sm">
+          <i data-feather="book-open" class="w-6 h-6 mb-2"></i>Study Materials
+        </button>
+
+        <button onclick="openModal('Instructor Notes', 'Review notes from instructors.')" class="bg-white text-blue-600 font-semibold py-4 px-2 rounded-xl shadow-md hover:bg-blue-100 transition flex flex-col items-center justify-center text-sm">
+          <i data-feather="clipboard" class="w-6 h-6 mb-2"></i>Instructor Notes
+        </button>
+
+        <button onclick="openModal('Request Form', 'Submit a request to the academy.')" class="bg-white text-blue-600 font-semibold py-4 px-2 rounded-xl shadow-md hover:bg-blue-100 transition flex flex-col items-center justify-center text-sm">
+          <i data-feather="file-plus" class="w-6 h-6 mb-2"></i>Request Form
+        </button>
+      </div>
     </div>
+
+    <!-- Sub-button Schedule -->
+    <div id="subScheduleButtons" class="grid grid-cols-1 sm:grid-cols-3 gap-8 mt-6 w-full max-w-md mx-auto text-white hidden">
+ <button onclick="openScheduleModal('https://to.baliflightacademy.com:7329/srs/kiosk/')" class="bg-blue-600 text-white w-24 h-24 md:w-28 md:h-28 rounded-full flex flex-col items-center justify-center shadow-lg hover:bg-blue-700 transition-all text-sm font-bold">
+  <i data-feather="navigation" class="w-8 h-8 mb-2"></i>Flight <br>Schedule
+</button>
+
+<button class="bg-green-600 text-white w-24 h-24 md:w-28 md:h-28 rounded-full flex flex-col items-center justify-center shadow-lg hover:bg-green-700 transition-all text-sm font-bold">
+  <i data-feather="book" class="w-8 h-8 mb-2"></i>Ground <br>Schedule
+</button>
+
+<button class="bg-yellow-500 text-white w-24 h-24 md:w-28 md:h-28 rounded-full flex flex-col items-center justify-center shadow-lg hover:bg-yellow-600 transition-all text-sm font-bold">
+  <i data-feather="cpu" class="w-8 h-8 mb-2"></i>FTD <br>Schedule
+</button>
 </div>
-    <div class="swiper-pagination mb-6"></div>
+
   </div>
+</div>
+
 
   <!-- SwiperJS -->
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
@@ -151,28 +200,61 @@
 
   // Aktifkan feather icons
   feather.replace();
+
+  function toggleSubScheduleButtons() {
+    // Sembunyikan sub-schedule jika klik di luar area
+document.addEventListener('click', function (event) {
+  const subButtons = document.getElementById('subScheduleButtons');
+  const trigger = document.getElementById('subScheduleTrigger');
+
+  const isClickInside = subButtons.contains(event.target) || trigger.contains(event.target);
+
+  if (!isClickInside && subButtons.classList.contains('show')) {
+    subButtons.classList.remove('show');
+    setTimeout(() => subButtons.classList.add('hidden'), 300);
+    
+    // Reset ikon rotate
+    const icon = trigger.querySelector('[data-feather="calendar"]');
+    icon?.classList.remove('rotate-180');
+    feather.replace(); // Refresh icon
+  }
+});
+  const subButtons = document.getElementById('subScheduleButtons');
+  const isVisible = subButtons.classList.contains('show');
+
+  if (isVisible) {
+    subButtons.classList.remove('show');
+    setTimeout(() => subButtons.classList.add('hidden'), 300);
+  } else {
+    subButtons.classList.remove('hidden');
+    setTimeout(() => subButtons.classList.add('show'), 10);
+  }
+
+  const icon = document.querySelector('[data-feather="calendar"]');
+  icon.classList.toggle('rotate-180');
+  feather.replace(); // refresh icon rotation
+}
+
 function openScheduleModal(url) {
   document.getElementById('scheduleIframe').src = url;
   document.getElementById('scheduleModal').classList.remove('hidden');
-}
 
+ 
+  feather.replace();
+}
 function closeScheduleModal() {
   document.getElementById('scheduleModal').classList.add('hidden');
   document.getElementById('scheduleIframe').src = '';
+  
+  // Sembunyikan sub-button
+  subButtons.classList.remove('show');
 }
 
-function openModal(title, content) {
-  document.getElementById('modalTitle').textContent = title;
-  document.getElementById('modalContent').textContent = content;
-  document.getElementById('customModal').classList.remove('hidden');
-}
-
-function closeModal() {
-  document.getElementById('customModal').classList.add('hidden');
-}
 
 
 </script>
+
+
 
 <!-- Modal -->
 <div id="customModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
