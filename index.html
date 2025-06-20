@@ -4,8 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>BCL Kiosk</title>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
   <script src="https://unpkg.com/feather-icons"></script>
@@ -22,48 +21,37 @@
     .swiper-pagination-bullet-active {
       opacity: 1;
     }
-	  
-  .menu-btn i {
-    width: 24px;
-    height: 24px;
-    margin-bottom: 0.5rem;
-  }
-    /* Animasi smooth untuk subScheduleButtons */
-  #subScheduleButtons {
-    transition: all 0.4s ease;
-    transform: scale(0.95);
-    opacity: 0;
-    height: 0;
-    overflow: hidden;
-  }
-
-  #subScheduleButtons.show {
-    opacity: 1;
-    transform: scale(1);
-    height: auto;
-    margin-top: 1.5rem; /* mt-6 */
-  }
-
-  .rotate-180 {
-  transform: rotate(180deg);
-  transition: transform 0.3s ease;
-
+    #subScheduleButtons {
+      transition: all 0.4s ease;
+      transform: scale(0.95);
+      opacity: 0;
+      height: 0;
+      overflow: hidden;
+    }
+    #subScheduleButtons.show {
+      opacity: 1;
+      transform: scale(1);
+      height: auto;
+      margin-top: 1.5rem;
+    }
+    .rotate-180 {
+      transform: rotate(180deg);
+      transition: transform 0.3s ease;
+    }
     @keyframes fadeIn {
-    0% { opacity: 0; transform: scale(0.9); }
-    100% { opacity: 1; transform: scale(1); }
-  }
-
-  .animate-fadeIn {
-    animation: fadeIn 0.3s ease-out forwards;
-  }
-}
+      0% { opacity: 0; transform: scale(0.9); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+    .animate-fadeIn {
+      animation: fadeIn 0.3s ease-out forwards;
+    }
   </style>
 </head>
 <body>
   <div class="swiper h-screen w-full">
     <div class="swiper-wrapper">
-
-      <!-- Slide 1 -->
+      <!-- Slide 1 to 3 Omitted for Brevity -->
+        <!-- Slide 1 -->
       <div class="swiper-slide">
         <div class="flex justify-center items-center min-h-screen w-full">
           <div class="text-white text-center px-4">
@@ -106,225 +94,179 @@
         </div>
       </div>
 
-<!-- Slide 4 -->
-<div class="swiper-slide">
-  <div class="flex flex-col items-center justify-center min-h-screen w-full px-4">
+      <!-- Slide 4 -->
+      <div class="swiper-slide">
+        <div class="flex flex-col items-center justify-center min-h-screen w-full px-4">
+          <div class="flex flex-col md:flex-row items-center md:items-start gap-8 max-w-6xl w-full">
+            <div class="w-full md:w-1/2 flex justify-center">
+              <img src="Cessna.png" alt="Pesawat Cessna" class="w-full max-w-md h-auto" />
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 text-center w-full md:w-1/2">
+              <button id="subScheduleTrigger" onclick="toggleSubScheduleButtons()" class="bg-white text-blue-600 font-semibold py-4 px-2 rounded-xl shadow-md hover:bg-blue-100 transition flex flex-col items-center justify-center text-sm">
+                <i data-feather="calendar" class="w-6 h-6 mb-2"></i>Daily<br>Student Schedule
+              </button>
+              <button onclick="openModal('Flight Briefing', 'Access your flight briefing materials.')" class="bg-white text-blue-600 font-semibold py-4 px-2 rounded-xl shadow-md hover:bg-blue-100 transition flex flex-col items-center justify-center text-sm">
+                <i data-feather="file-text" class="w-6 h-6 mb-2"></i>Daily<br>Student Report
+              </button>
+              <button onclick="openQrModal('https://to.baliflightacademy.com:7329/mobile/')" class="bg-white text-blue-600 font-semibold py-4 px-2 rounded-xl shadow-md hover:bg-blue-100 transition flex flex-col items-center justify-center text-sm">
+                <i data-feather="smartphone" class="w-6 h-6 mb-2"></i>Access SRS Mobile 
+              </button>
+              <button onclick="openModal('Study Materials', 'Download SOPs and study guides.')" class="bg-white text-blue-600 font-semibold py-4 px-2 rounded-xl shadow-md hover:bg-blue-100 transition flex flex-col items-center justify-center text-sm">
+                <i data-feather="book-open" class="w-6 h-6 mb-2"></i>Study Materials
+              </button>
+              <button onclick="openModal('Instructor Notes', 'Review notes from instructors.')" class="bg-white text-blue-600 font-semibold py-4 px-2 rounded-xl shadow-md hover:bg-blue-100 transition flex flex-col items-center justify-center text-sm">
+                <i data-feather="clipboard" class="w-6 h-6 mb-2"></i>Instructor Notes
+              </button>
+              <button onclick="openModal('Request Form', 'Submit a request to the academy.')" class="bg-white text-blue-600 font-semibold py-4 px-2 rounded-xl shadow-md hover:bg-blue-100 transition flex flex-col items-center justify-center text-sm">
+                <i data-feather="file-plus" class="w-6 h-6 mb-2"></i>Request Form
+              </button>
+            </div>
+          </div>
 
-    <!-- Flex row: gambar kiri, tombol kanan -->
-    <div class="flex flex-col md:flex-row items-center md:items-start gap-8 max-w-6xl w-full">
+          
 
-      <!-- Gambar pesawat (kiri di desktop) -->
-      <div class="w-full md:w-1/2 flex justify-center">
-        <img src="Cessna.png" alt="Pesawat Cessna" class="w-full max-w-md h-auto" />
+          <div id="subScheduleButtons" class="grid grid-cols-1 sm:grid-cols-3 gap-8 mt-6 w-full max-w-md mx-auto text-white hidden">
+            <button onclick="openScheduleModal('https://to.baliflightacademy.com:7329/srs/kiosk/')" class="bg-blue-600 text-white w-24 h-24 md:w-28 md:h-28 rounded-full flex flex-col items-center justify-center shadow-lg hover:bg-blue-700 transition-all text-sm font-bold">
+              <i data-feather="navigation" class="w-8 h-8 mb-2"></i>Flight <br>Schedule
+            </button>
+            <button class="bg-green-600 text-white w-24 h-24 md:w-28 md:h-28 rounded-full flex flex-col items-center justify-center shadow-lg hover:bg-green-700 transition-all text-sm font-bold">
+              <i data-feather="book" class="w-8 h-8 mb-2"></i>Ground <br>Schedule
+            </button>
+            <button class="bg-yellow-500 text-white w-24 h-24 md:w-28 md:h-28 rounded-full flex flex-col items-center justify-center shadow-lg hover:bg-yellow-600 transition-all text-sm font-bold">
+              <i data-feather="cpu" class="w-8 h-8 mb-2"></i>FTD <br>Schedule
+            </button>
+          </div>
+        </div>
       </div>
-
-      <!-- Tombol menu (kanan di desktop) -->
-      <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 text-center w-full md:w-1/2">
-        <button id="subScheduleTrigger" onclick="toggleSubScheduleButtons()" class="bg-white text-blue-600 font-semibold py-4 px-2 rounded-xl shadow-md hover:bg-blue-100 transition flex flex-col items-center justify-center text-sm">
-          <i data-feather="calendar" class="w-6 h-6 mb-2"></i>Daily<br>Student Schedule
-        </button>
-
-        <button onclick="openModal('Flight Briefing', 'Access your flight briefing materials.')" class="bg-white text-blue-600 font-semibold py-4 px-2 rounded-xl shadow-md hover:bg-blue-100 transition flex flex-col items-center justify-center text-sm">
-          <i data-feather="file-text" class="w-6 h-6 mb-2"></i>Daily<br>Student Report
-        </button>
-
-        <button onclick="openQrModal('https://to.baliflightacademy.com:7329/mobile/')" class="bg-white text-blue-600 font-semibold py-4 px-2 rounded-xl shadow-md hover:bg-blue-100 transition flex flex-col items-center justify-center text-sm">
-  <i data-feather="smartphone" class="w-6 h-6 mb-2"></i>Access SRS Mobile 
-</button>
-
-        <button onclick="openModal('Study Materials', 'Download SOPs and study guides.')" class="bg-white text-blue-600 font-semibold py-4 px-2 rounded-xl shadow-md hover:bg-blue-100 transition flex flex-col items-center justify-center text-sm">
-          <i data-feather="book-open" class="w-6 h-6 mb-2"></i>Study Materials
-        </button>
-
-        <button onclick="openModal('Instructor Notes', 'Review notes from instructors.')" class="bg-white text-blue-600 font-semibold py-4 px-2 rounded-xl shadow-md hover:bg-blue-100 transition flex flex-col items-center justify-center text-sm">
-          <i data-feather="clipboard" class="w-6 h-6 mb-2"></i>Instructor Notes
-        </button>
-
-        <button onclick="openModal('Request Form', 'Submit a request to the academy.')" class="bg-white text-blue-600 font-semibold py-4 px-2 rounded-xl shadow-md hover:bg-blue-100 transition flex flex-col items-center justify-center text-sm">
-          <i data-feather="file-plus" class="w-6 h-6 mb-2"></i>Request Form
-        </button>
-      </div>
-    </div>
-
-    <!-- Sub-button Schedule -->
-    <div id="subScheduleButtons" class="grid grid-cols-1 sm:grid-cols-3 gap-8 mt-6 w-full max-w-md mx-auto text-white hidden">
- <button onclick="openScheduleModal('https://to.baliflightacademy.com:7329/srs/kiosk/')" class="bg-blue-600 text-white w-24 h-24 md:w-28 md:h-28 rounded-full flex flex-col items-center justify-center shadow-lg hover:bg-blue-700 transition-all text-sm font-bold">
-  <i data-feather="navigation" class="w-8 h-8 mb-2"></i>Flight <br>Schedule
-</button>
-
-<button class="bg-green-600 text-white w-24 h-24 md:w-28 md:h-28 rounded-full flex flex-col items-center justify-center shadow-lg hover:bg-green-700 transition-all text-sm font-bold">
-  <i data-feather="book" class="w-8 h-8 mb-2"></i>Ground <br>Schedule
-</button>
-
-<button class="bg-yellow-500 text-white w-24 h-24 md:w-28 md:h-28 rounded-full flex flex-col items-center justify-center shadow-lg hover:bg-yellow-600 transition-all text-sm font-bold">
-  <i data-feather="cpu" class="w-8 h-8 mb-2"></i>FTD <br>Schedule
-</button>
-</div>
-
-  </div>
-</div>
-
-
-  <!-- SwiperJS -->
-  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-<script>
-
-		const swiper = new Swiper('.swiper', {
-  direction: 'horizontal',
-  loop: true,
-  autoplay: {
-    delay: 5000,
-    disableOnInteraction: false,
-  },
-  pagination: {
-    el: '.swiper-pagination',
-    clickable: true,
-  },
-});
-
-  // Atur logika ketika masuk ke Slide 4
-  swiper.on('slideChange', () => {
-    const currentIndex = swiper.realIndex;
-    if (currentIndex === 3) { // Slide ke-4 (index dimulai dari 0)
-      swiper.autoplay.stop(); // Hentikan autoplay
-      console.log("Stay on slide 4 for 30 minutes...");
       
-      setTimeout(() => {
-        swiper.slideToLoop(0); // Kembali ke Slide 1
-        swiper.autoplay.start(); // Mulai autoplay kembali
-        console.log("Returning to slide 1...");
-      }, 30 * 60 * 1000); // 30 menit dalam milidetik (1800000)
-    }
-  });
-  
-   function openModal(title, content) {
-    document.getElementById('modalTitle').textContent = title;
-    document.getElementById('modalContent').textContent = content;
-    document.getElementById('customModal').classList.remove('hidden');
-  }
-
-  function closeModal() {
-    document.getElementById('customModal').classList.add('hidden');
-  }
-
-  // Aktifkan feather icons
-  feather.replace();
-
-  function toggleSubScheduleButtons() {
-    // Sembunyikan sub-schedule jika klik di luar area
-document.addEventListener('click', function (event) {
-  const subButtons = document.getElementById('subScheduleButtons');
-  const trigger = document.getElementById('subScheduleTrigger');
-
-  const isClickInside = subButtons.contains(event.target) || trigger.contains(event.target);
-
-  if (!isClickInside && subButtons.classList.contains('show')) {
-    subButtons.classList.remove('show');
-    setTimeout(() => subButtons.classList.add('hidden'), 300);
-    
-    // Reset ikon rotate
-    const icon = trigger.querySelector('[data-feather="calendar"]');
-    icon?.classList.remove('rotate-180');
-    feather.replace(); // Refresh icon
-  }
-});
-  const subButtons = document.getElementById('subScheduleButtons');
-  const isVisible = subButtons.classList.contains('show');
-
-  if (isVisible) {
-    subButtons.classList.remove('show');
-    setTimeout(() => subButtons.classList.add('hidden'), 300);
-  } else {
-    subButtons.classList.remove('hidden');
-    setTimeout(() => subButtons.classList.add('show'), 10);
-  }
-
-  const icon = document.querySelector('[data-feather="calendar"]');
-  icon.classList.toggle('rotate-180');
-  feather.replace(); // refresh icon rotation
-}
-
-function openScheduleModal(url) {
-  document.getElementById('scheduleIframe').src = url;
-  document.getElementById('scheduleModal').classList.remove('hidden');
-
- 
-  feather.replace();
-}
-function closeScheduleModal() {
-  document.getElementById('scheduleModal').classList.add('hidden');
-  document.getElementById('scheduleIframe').src = '';
-  
-  // Sembunyikan sub-button
-  subButtons.classList.remove('show');
-}
-
-function openQrModal(url) {
-  document.getElementById('qrModal').classList.remove('hidden');
-  
-  // Hapus QR sebelumnya jika ada
-  const qrContainer = document.getElementById('qrcode');
-  qrContainer.innerHTML = "";
-
-  // Generate QR baru
-  new QRCode(qrContainer, {
-    text: url,
-    width: 180,
-    height: 180,
-    colorDark: "#000000",
-    colorLight: "#ffffff",
-    correctLevel: QRCode.CorrectLevel.H
-  });
-}
-
-function closeQrModal() {
-  document.getElementById('qrModal').classList.add('hidden');
-}
-
-
-</script>
-
-
-
-<!-- Modal -->
-<div id="customModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
-  <div class="bg-white rounded-xl p-6 max-w-md text-center shadow-xl">
-    <h2 id="modalTitle" class="text-xl font-bold mb-2 text-blue-600">Modal Title</h2>
-    <p id="modalContent" class="mb-4 text-gray-700">Modal content goes here.</p>
-    <button onclick="closeModal()" class="bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700 transition">Close</button>
-  </div>
-</div>
-<!-- Fullscreen Modal for Student Schedule -->
-<div id="scheduleModal" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 hidden">
-  <div class="relative bg-white w-full h-full p-0">
-    <button onclick="closeScheduleModal()" class="absolute top-4 right-4 bg-red-600 text-white px-4 py-2 rounded-full hover:bg-red-700 z-10 shadow-lg">
-      Close
-    </button>
-    <iframe id="scheduleIframe" src="" class="w-full h-full border-none"></iframe>
-  </div>
-</div>	
-
-<!-- QR Modal -->
-<div id="qrModal" class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 hidden">
-  <div class="bg-white rounded-2xl p-6 sm:p-8 max-w-md w-full shadow-2xl relative animate-fadeIn">
-    <h2 class="text-2xl font-bold text-center text-blue-700 mb-3">📱 Access SRS Mobile</h2>
-    <p class="text-gray-600 text-center mb-6">Scan the QR code below to open the mobile student system.</p>
-
-    <div class="flex justify-center mb-4">
-  <img src="bifalogo.png" class="h-12" alt="BIFA Logo">
-</div>
-
-    <div id="qrcode" class="flex justify-center mb-6"></div>
-
-    <div class="flex justify-center">
-      <button onclick="closeQrModal()" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-full shadow-md transition duration-300">
-        Close
-      </button>
     </div>
   </div>
-</div>
+  <div class="swiper-pagination"></div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <!-- Modal Elements & Scripts -->
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script>
+    const swiper = new Swiper('.swiper', {
+      direction: 'horizontal',
+      loop: true,
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+    });
 
+    swiper.on('slideChange', () => {
+      const currentIndex = swiper.realIndex;
+      if (currentIndex === 3) {
+        swiper.autoplay.stop();
+        setTimeout(() => {
+          swiper.slideToLoop(0);
+          swiper.autoplay.start();
+        }, 30 * 60 * 1000);
+      }
+    });
+
+    function openModal(title, content) {
+      document.getElementById('modalTitle').textContent = title;
+      document.getElementById('modalContent').textContent = content;
+      document.getElementById('customModal').classList.remove('hidden');
+      feather.replace();
+    }
+
+    function closeModal() {
+      document.getElementById('customModal').classList.add('hidden');
+    }
+
+    function toggleSubScheduleButtons() {
+      const subButtons = document.getElementById('subScheduleButtons');
+      const icon = document.querySelector('[data-feather="calendar"]');
+      if (subButtons.classList.contains('show')) {
+        subButtons.classList.remove('show');
+        setTimeout(() => subButtons.classList.add('hidden'), 300);
+      } else {
+        subButtons.classList.remove('hidden');
+        setTimeout(() => subButtons.classList.add('show'), 10);
+      }
+      icon.classList.toggle('rotate-180');
+      feather.replace();
+    }
+
+    document.addEventListener('click', function (event) {
+      const subButtons = document.getElementById('subScheduleButtons');
+      const trigger = document.getElementById('subScheduleTrigger');
+      if (!subButtons.contains(event.target) && !trigger.contains(event.target)) {
+        subButtons.classList.remove('show');
+        setTimeout(() => subButtons.classList.add('hidden'), 300);
+        const icon = trigger.querySelector('[data-feather="calendar"]');
+        icon?.classList.remove('rotate-180');
+        feather.replace();
+      }
+    });
+
+    function openScheduleModal(url) {
+      document.getElementById('scheduleIframe').src = url;
+      document.getElementById('scheduleModal').classList.remove('hidden');
+      feather.replace();
+    }
+
+    function closeScheduleModal() {
+      document.getElementById('scheduleModal').classList.add('hidden');
+      document.getElementById('scheduleIframe').src = '';
+    }
+
+    function openQrModal(url) {
+      document.getElementById('qrModal').classList.remove('hidden');
+      const qrContainer = document.getElementById('qrcode');
+      qrContainer.innerHTML = "";
+      new QRCode(qrContainer, {
+        text: url,
+        width: 180,
+        height: 180,
+        colorDark: "#000000",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.H
+      });
+      feather.replace();
+    }
+
+    function closeQrModal() {
+      document.getElementById('qrModal').classList.add('hidden');
+    }
+
+    window.onload = () => feather.replace();
+  </script>
+
+  <!-- Modal Templates -->
+  <div id="customModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+    <div class="bg-white rounded-xl p-6 max-w-md text-center shadow-xl">
+      <h2 id="modalTitle" class="text-xl font-bold mb-2 text-blue-600">Modal Title</h2>
+      <p id="modalContent" class="mb-4 text-gray-700">Modal content goes here.</p>
+      <button onclick="closeModal()" class="bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700 transition">Close</button>
+    </div>
+  </div>
+  <div id="scheduleModal" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 hidden">
+    <div class="relative bg-white w-full h-full p-0">
+      <button onclick="closeScheduleModal()" class="absolute top-4 right-4 bg-red-600 text-white px-4 py-2 rounded-full hover:bg-red-700 z-10 shadow-lg">Close</button>
+      <iframe id="scheduleIframe" src="" class="w-full h-full border-none"></iframe>
+    </div>
+  </div>
+  <div id="qrModal" class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 hidden">
+    <div class="bg-white rounded-2xl p-6 sm:p-8 max-w-md w-full shadow-2xl relative animate-fadeIn">
+      <h2 class="text-2xl font-bold text-center text-blue-700 mb-3">📱 Access SRS Mobile</h2>
+      <p class="text-gray-600 text-center mb-6">Scan the QR code below to open the mobile student system.</p>
+      <div class="flex justify-center mb-4">
+        <img src="bifalogo.png" class="h-12" alt="BIFA Logo">
+      </div>
+      <div id="qrcode" class="flex justify-center mb-6"></div>
+      <div class="flex justify-center">
+        <button onclick="closeQrModal()" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-full shadow-md transition duration-300">Close</button>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
