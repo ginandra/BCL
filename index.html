@@ -87,7 +87,9 @@
 
       <!-- Tombol menu di bawah gambar -->
       <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 gap-4 text-center w-full">
-        <button onclick="openModal('Student Schedule', 'Check your daily ground and flight schedule.')" class="bg-white text-blue-600 font-semibold py-4 px-2 rounded-xl shadow-md hover:bg-blue-100 transition flex flex-col items-center justify-center text-sm"><i data-feather="calendar" class="w-6 h-6 mb-2"></i>Student Schedule</button>
+        <button onclick="openScheduleModal('https://to.baliflightacademy.com:7329/srs/kiosk/')" class="bg-white text-blue-600 font-semibold py-4 px-2 rounded-xl shadow-md hover:bg-blue-100 transition flex flex-col items-center justify-center text-sm">
+  <i data-feather="calendar" class="w-6 h-6 mb-2"></i>Student Schedule
+</button>
         <button onclick="openModal('Flight Briefing', 'Access your flight briefing materials.')" class="bg-white text-blue-600 font-semibold py-4 px-2 rounded-xl shadow-md hover:bg-blue-100 transition flex flex-col items-center justify-center text-sm"><i data-feather="file-text" class="w-6 h-6 mb-2"></i>Flight Briefing</button>
         <button onclick="openModal('Grades Access', 'View your academic performance and progress.')" class="bg-white text-blue-600 font-semibold py-4 px-2 rounded-xl shadow-md hover:bg-blue-100 transition flex flex-col items-center justify-center text-sm"><i data-feather="bar-chart-2" class="w-6 h-6 mb-2"></i>Grades Access</button>
         <button onclick="openModal('Study Materials', 'Download SOPs and study guides.')" class="bg-white text-blue-600 font-semibold py-4 px-2 rounded-xl shadow-md hover:bg-blue-100 transition flex flex-col items-center justify-center text-sm"><i data-feather="book-open" class="w-6 h-6 mb-2"></i>Study Materials</button>
@@ -149,6 +151,25 @@
 
   // Aktifkan feather icons
   feather.replace();
+function openScheduleModal(url) {
+  document.getElementById('scheduleIframe').src = url;
+  document.getElementById('scheduleModal').classList.remove('hidden');
+}
+
+function closeScheduleModal() {
+  document.getElementById('scheduleModal').classList.add('hidden');
+  document.getElementById('scheduleIframe').src = '';
+}
+
+function openModal(title, content) {
+  document.getElementById('modalTitle').textContent = title;
+  document.getElementById('modalContent').textContent = content;
+  document.getElementById('customModal').classList.remove('hidden');
+}
+
+function closeModal() {
+  document.getElementById('customModal').classList.add('hidden');
+}
 
 
 </script>
@@ -161,7 +182,16 @@
     <button onclick="closeModal()" class="bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700 transition">Close</button>
   </div>
 </div>
-	
+<!-- Fullscreen Modal for Student Schedule -->
+<div id="scheduleModal" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 hidden">
+  <div class="relative bg-white w-full h-full p-0">
+    <button onclick="closeScheduleModal()" class="absolute top-4 right-4 bg-red-600 text-white px-4 py-2 rounded-full hover:bg-red-700 z-10 shadow-lg">
+      Close
+    </button>
+    <iframe id="scheduleIframe" src="" class="w-full h-full border-none"></iframe>
+  </div>
+</div>	
+
 </div>
 </body>
 </html>
