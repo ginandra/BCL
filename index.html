@@ -148,6 +148,16 @@
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
   <script>
+    
+     // Kirim request ke server logger
+  fetch("logger.php")
+    .then(res => res.text())
+    .then(txt => console.log("Log status:", txt))
+    .catch(err => console.error(err));
+
+
+
+    
     const swiper = new Swiper('.swiper', {
       direction: 'horizontal',
       loop: true,
